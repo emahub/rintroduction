@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>R入門</title>
+	
+	<meta name="description" content="A jQuery library for modern HTML presentations">
+	<meta name="author" content="Caleb Troughton">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Core and extension CSS files -->
+	<link rel="stylesheet" href="core/deck.core.css">
+	<link rel="stylesheet" href="extensions/goto/deck.goto.css">
+	<link rel="stylesheet" href="extensions/menu/deck.menu.css">
+	<link rel="stylesheet" href="extensions/navigation/deck.navigation.css">
+	<link rel="stylesheet" href="extensions/status/deck.status.css">
+	<link rel="stylesheet" href="extensions/hash/deck.hash.css">
+	<link rel="stylesheet" href="extensions/scale/deck.scale.css">
+	
+	<!-- Style theme. More available in /themes/style/ or create your own. -->
+	<link rel="stylesheet" href="./themes/style/swiss.css">
+	<link rel="stylesheet" href="./content/swiss_append.css">
+	
+	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
+	<link rel="stylesheet" href="themes/transition/horizontal-slide.css">
+	
+	<script src="modernizr.custom.js"></script>
+</head>
+
+<body class="deck-container">
+
+<!-- Begin slides -->
+<section class="slide" id="title-slide">
+	<h1>R入門</h1>
+</section>
+
+<section class="slide" id="whatisr">
+	<h2>Rとは</h2>
+	<ul>
+		<li>オープンソースでフリーソフトウェアの統計解析向けプログラミング言語、<br/>及びその開発実行環境<br/>
+		<a href="http://ja.wikipedia.org/wiki/R言語">http://ja.wikipedia.org/wiki/R言語</a></li>
+	</ul>
+</section>
+
+<section class="slide" id="target">
+	<h2>狙い</h2>
+	<p>実習形式でRの使い方に慣れるのが本講義の目的です。</p>
+	<p>細かい理論や評価の理念等、<span style="text-decoration:line-through; color:#faf;">うっかり内職したくなるような</span>複雑な内容はガンガン飛ばしてきます。</p>
+	<p>何をどうやるかより、端的に<strong>何ができるようになるか</strong>を目指します。</p>
+	
+	<h2>達成目標</h2>
+	<ul>
+		<li>身の回りの人にR使ったことがあるとドヤ顔できる程度</li>
+		<li>足りない知識は自学自習して補完できるようになる程度</li>
+		<li>『データ分析』や『データマイニング』の課題に使い回しできる程度</li>
+	</ul>
+</section>
+
+
+
+<section class="slide" id="methods">
+	<h2>今日扱う統計手法</h2>
+	<ol>
+		<li>
+			<h3>相関・回帰</h3>
+			<p>ある二つのパラメータの関係</p>
+		</li>
+		<li>
+			<h3>決定木</h3>
+			<p>あるパラメータから事象を推理・決定する</p>
+		</li>
+		<li>
+			<h3>クラスター分析</h3>
+			<p>あるデータ群から似たデータ同士のグループに分ける</p>
+		</li>
+	</ol>
+</section>
+
+<section class="slide" id="install">
+	<h2>R</h2>
+	<p>何はともあれまずはRをインストールしましょう。</p>
+	<h3>Windowsユーザ</h3>
+	<ol>
+		<li><a href="http://www.r-project.org">http://www.r-project.org</a> にアクセス</li>
+		<li>右フレームのGetting Started:の中の"download R"</li>
+		<li>Japan の http://cran.ism.ac.jp （東京 統計数理研究所）など選んでください。</li>
+		<li>"Download R for Windows"</li>
+		<li>"install R for the first time"</li>
+		<li>"Download R 2.15.1 for Windows"</li>
+		<li>R-2.15.1-win.exeを実行 画面に従う インストール終わったら実行</li>
+	</ol>
+	<h3>MacやLinuxユーザ</h3>
+	<p>Download R for XXXで適切な奴を選べば行けるはず。</p>
+</section>
+
+<section class="slide" id="operation">
+	<h2>Rの簡単な操作</h2>
+	<p>コマンドの実行と作業ディレクトリの変更だけ覚えておきましょう</p>
+	
+	<h3>単一行のコマンドの実行</h3>
+	<ul><li>R ConsoleにプログラムをタイプしてEnter</li></ul>
+	
+	<h3>複数行のコマンドの実行</h3>
+	<ul>
+	<li>Windowsユーザは（R Consoleがアクティヴな状態で）ファイル→新しいスクリプト、プログラムを書いて、選択、Ctrl+R</li>
+	<li>Macユーザはファイル→新規文書、プログラムを書いて、選択、Command+Enter</li>
+	</ul>
+	
+	<h3>作業ディレクトリの変更</h3>
+	<ul>
+	<li>Windowsユーザは（R Consoleがアクティヴな状態で）ファイル→ディレクトリの変更</li>
+	<li>Macユーザはその他->作業ディレクトリの変更</li>
+	<li><em>setwd("作業ディレクトリのアドレス")</em> というコマンドでも可。<em>getwd()</em>でpwdできる。</li>
+	</ul>
+</section>
+
+<section class="slide" id="first">
+	<h2>Rの簡単な操作</h2>
+	<h3>簡易電卓</h3>
+	<pre><code>1+2</code></pre>
+	<h3>ベクトルの足し算</h3>
+	<pre><code>x<-c(1,2)
+y<-c(2,3)
+x+y
+x*y</code></pre>
+</section>
+
+<section class="slide" id="second">
+	<h2>Rの簡単な操作</h2>
+	<h3>ファイルの読み込み</h3>
+	<pre><code>[作業ディレクトリの移動]
+human <- read.csv("data.csv");
+human</code></pre>
+
+	<p>年齢別体重と身長の平均のデータ<br/>
+	<a href="http://d.hatena.ne.jp/konisimple/20110307/1299504113">http://d.hatena.ne.jp/konisimple/20110307/1299504113</a><br/>
+	を使って、男女の年齢別体重身長のデータを作りました。<br/>
+	<a href="./content/data.csv">./content/data.csv</a></p>
+	
+	<h3>データフレーム型</h3>
+	<p>Rの基本的な構造で、行や列にカラム名をもつテーブル型のデータ</p>
+	<pre><code>human[1:4, 1:2] #1:4 行 1:2 列
+
+human[1:2] #列だけ指定
+human[1:4,] #行だけ指定</code></pre>
+</section>
+
+<section class="slide" id="third">
+	<h2>Rの簡単な操作</h2>
+	<h3>sin波のplot</h3>
+	<pre><code>plot(sin, xlim=c(0,2*pi), ylim=c(-1,1))</code></pre>
+	<img src="./content/sin.png">
+	
+	<h3>画像の出力(PNGだけでなくBMPやPDFもできます)</h3>
+	<pre><code>png(filename = "sin.png", width = 480, height=320)
+plot(sin, xlim=c(0,2*pi), ylim=c(-1,1))
+dev.off()</code></pre>
+
+<!--
+	<h3>PDFの出力</h3>
+	<pre><code>pdf("sin.pdf", family="Japan1GothicBBB")</code></pre>
+	<p>※日本語入りのとき日本語フォントを指定しないと文字化けるようです。</p>
+-->
+</section>
+
+<section class="slide" id="concept">
+	<h2>Rの基本概念</h2>
+	<h3>オブジェクト</h3>
+	<p>データが代入されてる箱</p>
+	
+	<h3>型</h3>
+	<p>データに応じてオブジェクトの型をよしなにあわせてくれる。int宣言とかいらない。<br/>
+（内部的にはちゃんとベクトル型やリスト型、数値型など存在する。明示する必要がないだけ。）</p>
+	
+	<h3>代入操作</h3>
+	<pre><code>x<-y #オブジェクトxにオブジェクトyをコピーして代入する。</code></pre>
+
+	<h3>コメント</h3>
+	<pre><code># 半角シャープ記号でその行はコメントです</code></pre>
+</section>
+
+<section class="slide" id="correlation">
+	<h2>相関(Correlation)</h2>
+	<p>2つの量的データの関係。片方の値の増減によって何らかの連動がみられるとき相関があるという。</p>
+	<img src="./content/clip_image015.jpeg">
+	
+	<h3>擬似相関</h3>
+	<img src="./content/clip_image021.jpeg">
+	<p style="text-align:right;">引用：<a href="http://www.takenet.or.jp/~hayakawa/u-tan1-1.htm">http://www.takenet.or.jp/~hayakawa/u-tan1-1.htm</a></p>
+</section>
+
+
+
+<section class="slide" id="colval">
+	<h2>相関係数</h2>
+	<table id="waku" style="float:left">
+	<tr><th>値</th><th>度合い</th></tr>
+	<tr><td>1〜0.7</td><td>強い正の相関</td></tr>
+	<tr><td>0.7〜0.4</td><td>中程度の正の相関</td></tr>
+	<tr><td>0.4〜0.2</td><td>弱い正の相関</td></tr>
+	<tr><td>0.2〜-0.2</td><td>ほとんど相関がない</td></tr>
+	<tr><td>-0.2〜-0.4</td><td>弱い負の相関</td></tr>
+	<tr><td>-0.4〜-0.7</td><td>中程度の負の相関</td></tr>
+	<tr><td>-0.7〜-1</td><td>強い負の相関</td></tr>
+	</table>
+	
+	<div style="margin-left:20em;">
+	<p>男性の年齢と身長を分析してみる</p>
+	<pre><code>age <- human[,1]
+height <- human[,2]
+plot(age, height, xlab="Age", ylab="Height", main="Male")
+cor(age, height)</code></pre>
+
+	<p>次は男性の身長と体重を分析してみる</p>
+	<pre><code>weight <- human[,4]
+plot(height, weight, xlab="Height", ylab="Weight", main="Male")
+cor(height, weight)</code></pre>
+	</div>
+</section>
+
+<section class="slide" id="regguide">
+	<h2>回帰(regression)</h2>
+	<h3>回帰分析</h3>
+	<p>因果関係を持つ２つの変量間の関係を簡潔に表す回帰方程式を求めること</p>
+
+	<h3>因果関係の例</h3>
+	<p>ある現象が原因となって別の現象を引き起こす関係。ある街の人口と廃棄物量には因果関係がある。</p>
+	<p>人口：変化を引きおこす原因となる変量＝説明変数、独立変数（変数を変量と言う場合も）<br/>
+	廃棄物量：独立変量によって変化が引き起こされる変量＝非説明変数、目的変数、従属変数</p>
+	
+	<h3>回帰方程式</h3>
+	<img src="http://chart.apis.google.com/chart?cht=tx&chs=60&chl=Y_i=a%2BbX_i%2B\epsilon_i" />
+	<p>a:定数項 b:傾き ε:誤差項 X_i:説明変量 Y_i:目的変量。aとbを回帰係数と言う。</p>
+	<p>また、回帰分析によって求まる直線を回帰直線と言う。</p>
+</section>
+
+<section class="slide" id="regline">
+	<h2>回帰直線のplot</h2>
+	<pre><code>res<-lm(weight~height)
+summary(res)
+
+abline(res) #プロットに直線を加える</code></pre>
+
+	<h3>回帰直線の方程式を求める</h3>
+	<pre><code>             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -93.63618    4.90302  -19.10   &lt;2e-16 ***
+height        0.94110    0.02955   31.84   &lt;2e-16 ***</code></pre>
+
+	<img src="http://chart.apis.google.com/chart?cht=tx&chs=60&chl=y=0.9411x-93.63618" />
+</section>
+
+<section class="slide" id="regval">
+	<h2>回帰直線の当てはまり具合</h2>
+	<table id="waku" style="float:left">
+	<tr><th>決定係数</th><th>度合い</th></tr>
+	<tr><td>1〜0.8</td><td>非常に良い</td></tr>
+	<tr><td>0.8〜0.5</td><td>やや良い</td></tr>
+	<tr><td>0.5〜0.0</td><td>悪い</td></tr>
+	</table>
+	
+	<div style="margin-left:15em;">
+	<h3>重相関係数 R</h3>
+	<p>実測値と予測値の相関係数</p>
+	<h3>決定係数 R^2</h3>
+	<p>決定係数 R^2(= 回帰直線のあてはまりのよさを示す基準)をもとに判断</p>
+	<p>決定係数はデータの変動の X % をモデルで説明できているかどうかを示せる。</p>
+	
+	<h3>自由度調整済み決定係数</h3>
+	<p>ケースが少ない かつ 独立変数の数が多い場合、R^2は1に近づいていく（＝当てはまりがどうしてもよくなってしまう）。このため、独立変数が増えることによる R^2 の増加を調整したのが 自由度調整済みの重相関係数の2乗で、こういったケースのも出るのあてはまり具合はこちらを用いること</p>
+	
+	<pre><code>Multiple R-squared: 0.9354,	Adjusted R-squared: 0.9345</code></pre>
+	
+	<!-- <p>※ 統計学的な基準はない。 <a href="http://www.env.go.jp/council/07air/y078-09/mat01-13.pdf">http://www.env.go.jp/council/07air/y078-09/mat01-13.pdf</a></p> -->
+
+	<!-- http://aoki2.si.gunma-u.ac.jp/Yogoshu/78.html -->
+	</div>
+</section>
+
+<section class="slide" id="multireg">
+<h2>重回帰分析</h2>
+<h3>重回帰分析</h3>
+<p>単回帰分析の独立変数が複数になったもの。また、x^2などが新たに含まれる場合も重回帰分析であるが、
+こういうケースは厳密には多項式回帰分析と呼ぶ。</p>
+
+<h3>多項式回帰分析</h3>
+	<pre><code>plot(age, height, xlab="Age", ylab="Height", main="Male")
+res<-lm(height~I(age^2)+age)
+summary(res)</code></pre>
+
+<p>lm内のI関数は二乗をそのまま認識させるために必要</p>
+
+<p>決定係数はどうでしょうか？</p>
+
+</section>
+
+<section class="slide" id="multiregline">
+<h2>重回帰分析の近似曲線の描画</h2>
+	<p>単回帰直線のときに使ったabline関数は一次関数の描画しか使えないので工夫が必要です。</p>
+	<pre><code>height2 <- predict(res)
+
+plot(age,height,xlim=c(6,77),ylim=c(100,180),xlab="",ylab="",main="")
+par(new=T) #上書き指定
+plot(age,height2,xlim=c(6,77),ylim=c(100,180),xlab="Age",ylab="Height",main="Male",type="l")</code></pre>
+
+	<p>predict関数で回帰方程式を元に計算される予測値を算出して、plotする。</p>
+<!-- result <- nls(height~(a * I(age^2) + b * age + c), start = c(a=0, b=0, c=0)) -->
+<!-- lm (線形回帰)、aov (分散分析)、glm (一般化線形回帰) 非線形最小自乗法 nls()-->
+</section>
+
+<section class="slide" id="decisiontree">
+<h2>決定木</h2>
+<p>樹木モデルは既存のデータ群を用いて、独立変数の値で分岐させる判別・予測のモデルを構築する。</p>
+<p>教師あり学習の問題で、回帰問題と分類問題があるが、ここでは分類問題で扱う決定木を述べる。</p>
+
+<table style="margin: 2em auto;">
+<tr>
+<td><img src="./content/Decision_tree_model_ja2.png" style="width:500px; margin-right:40px;"></td>
+<td><img src="./content/Decision_tree_model_ja.png"></td>
+</tr>
+</table>
+
+<p style="text-align:right;">引用：<a href="http://ja.wikipedia.org/wiki/%E6%B1%BA%E5%AE%9A%E6%9C%A8">http://ja.wikipedia.org/wiki/%E6%B1%BA%E5%AE%9A%E6%9C%A8</a></p>
+</section>
+
+<section class="slide" id="dataset">
+<h2>Rとデータセット</h2>
+<p>Rにはサンプルで使えるデータセットがたくさんある</p>
+
+<pre><code>data()</code></pre>
+
+<p>その中のirisというデータセットを使いましょう</p>
+
+<pre><code>iris</code></pre>
+
+<img src="./content/220px-Petal-sepal.jpeg" style="float:right">
+<p>アヤメの品種分類に関するデータ</p>
+
+<ul>
+<li>がくの長さ(Sepal.Length)</li>
+<li>がくの幅(Sepal.Width)</li>
+<li>花弁の長さ(Petal.Length)</li>
+<li>花弁の幅(Petal.Width)</li>
+<li>品種(Species:setosa/versicolor/virginica)</li>
+</ul>
+
+<p style="text-align:right;">引用：<a href="http://ja.wikipedia.org/wiki/%E8%90%BC">http://ja.wikipedia.org/wiki/%E8%90%BC</a></p>
+</section>
+
+
+<section class="slide" id="decision_ex">
+<h2>irisに対する決定木作成</h2>
+<p>まずは決定木を作成する関数rpartを含むpackage mvpartを読み込みます(≒#include)</p>
+<pre><code>install.packages("mvpart")
+library(mvpart)</code></pre>
+
+<p>Speciesを分類対象として決定木を作成</p>
+
+<pre><code>iris.rp<-rpart(Species~., data=iris) #Speciesは独立変数
+print(iris.rp, digit=2) # digitは桁の粗さ
+plot(iris.rp, uniform=T) # uniform=Tすると、各項の高さを同一に調整してくれる
+text(iris.rp, use.n=T, all=T, cex = 0.7)
+# use.n=T:末端に成否の個数を数値で書いてくれる
+# all=T:各分岐点ごとに割合を表示してくれる cex:文字サイズ</code></pre>
+</section>
+
+<section class="slide" id="decision_cp">
+<h2>複雑度</h2>
+<p>関数 printcp は、樹木の剪定のための複雑さのパラメータ(cp)を返す</p>
+<pre><code>printcp(iris.rp)</code></pre>
+<pre><code>（略）
+    CP nsplit rel error xerror     xstd
+1 0.50      0      1.00   1.19 0.049592
+2 0.44      1      0.50   0.69 0.061041
+3 0.02      2      0.06   0.11 0.031927
+4 0.01      3      0.04   0.11 0.031927</code></pre>
+</section>
+
+<section class="slide" id="decision_min1se">
+<h2>Min+1SE方法</h2>
+<p>樹木のサイズをxerrorの最小値からその標準偏差1倍の範囲内の最大のxerror値を選んできめる方法</p>
+<p><strong>値=0.11+0.031927=0.141927</strong></p>
+<p>0.14は2行目のxerror=0.69より小さく、3行目のxerror=0.11より大きいので、3行目のcp=0.02で作る</p>
+<p>cpを調整して、もう一度決定木を作る。pruneコマンドで剪定する。</p>
+
+<pre><code>iris.rp1 <- prune(iris.rp, cp=0.02)
+plot(iris.rp1, uniform=T)
+text(iris.rp1, use.n=T, all=T, cex = 0.7)</code></pre>
+</section>
+
+<!-- 例えば、cp=0.44とかでやればわかるけど、ざっくりとはわかるけど、ざっくりすぎてエラー率が高まる。
+逆にcp=0.01とかにすれば細かくわかるけど、枝が広がりすぎて条件分岐が大変になっていく。Min+1SE方法はその樹木サイズの目安を決める手法 -->
+<!-- 
+plotcp(iris.rp)
+グラフの下部の横軸がcpで、上部の横軸が樹木の葉の数で示すサイズである
+図の中の水平直線Min+1SEは、xerrorの最小値に1倍の標準偏差を足した値である。
+その直線の下方に最も近い点をオレンジ色で、xerrorの最小値の点を赤い色で示している。
+オレンジ色の点が樹木を剪定する目安である。
+
+青線がxerror
+赤線がrel error
+-->
+</section>
+
+<section class="slide" id="decision_kyphosis">
+<h2>演習</h2>
+<p>kyphosis（脊柱せきちゅう） データは
+"Data on Children who have had Corrective Spinal Surgery"
+とある。このデータは 81 人の脊椎湾曲症（せきついわんきょくしょう）を持つ
+子供の矯正手術の調査データを示すものである。</p>
+<pre><code>data(kyphosis)
+kyphosis</code></pre>
+
+<table id="waku">
+<tr><th>変数</th><th>モデルの役割</th><th>値の種類</th><th>説明</th></tr>
+<tr><td>Kyphosis</td><td>target</td><td>string</td><td>症状改善 (absent) / 不改善 (present)</td></tr>
+<tr><td>Age</td><td>input</td><td>integer</td><td>生後月数</td></tr>
+<tr><td>Number</td><td>input</td><td>integer</td><td>手術した脊椎の個数</td></tr>
+<tr><td>Start</td><td>input</td><td>integer</td><td>何番目の脊椎から先に手術したのか</td></tr>
+</table>
+
+</section>
+
+<section class="slide" id="cluster">
+<h2>クラスター分析</h2>
+<p>クラスタリングは、分類すべきクラス自身が分からない、という事態を想定している。クラスタリングによって、 どのようなクラスがあり得るのかを見出す。→教師なし学習</p>
+
+<img src="./content/EM-Gaussian-data.png" style="text-align:center;">
+
+<p style="text-align:right;">引用：<a href="http://en.wikipedia.org/wiki/Cluster_analysis">http://en.wikipedia.org/wiki/Cluster_analysis</a></p>
+</section>
+
+<section class="slide" id="cluster_hikaisou">
+<h2>非階層的クラスター分析</h2>
+<p>動物の体重(kg)と脳の重さ(g)のデータセットを使う。データセットはMASSライブラリに入ってるので読み込む。</p>
+<p>クラスタリングする前に、動物のデータセットを標準化(scale)する。</p>
+<pre><code>library(MASS)
+Animals #体重(kg)と脳の重さ(g)
+scale(Animals)</code></pre>
+<p>scale関数は、平均を0にするセンタリング処理（それぞれの値から平均の値を引く）と、分散を1にするスケーリング処理（それぞれの値を標準偏差で割る。分散はデータの散らばり具合を示すので、それを分散1という一定の尺度に合わせる。）によって行われる。</p>
+<pre><code>Animals.s <- scale(Animals)
+Animals.c <- kmeans(Animals.s, 3) # 3:クラスタ数
+Animals.c
+plot(Animals.s, col = Animals.c$cluster)
+points(Animals.c$centers, col=1:3, pch = 8, cex=2) #中心点を書く</code></pre>
+<!-- tapply(names(clust2$cluster), clust2$cluster, unique) -->
+<!--
+# col 色番号を1~4の順に表示する
+# pch 記号番号を8の米印にする
+-->
+</section>
+
+<section class="slide" id="cluster_kaisou">
+<h2>階層的クラスター分析</h2>
+<p>対象数が多くなると分析結果の解釈が難しいので、事前にクラスター数を指定して分類する非階層を適用するのがよい。</p>
+<pre><code>distmatrix <- dist(Animals.s)
+Animals.c<-hclust(distmatrix)
+plot(Animals.c,hang=0.2) #hang どの位置にラベルをおくか</code></pre>
+<!--
+distmatrix <- dist(scale(Animals), method="euclidean")
+Animals.c<-hclust(distmatrix,method="ward")
+-->
+
+<p>グループも表示できる。</p>
+
+<pre><code>group<-cutree(Animals.c, 5) #5つにグループを分割する
+group</code></pre>
+
+</section>
+
+<section class="slide" id="cluster_work">
+<h2>演習</h2>
+<p>mtcarsをクラスター分析してみてください</p>
+<p>注意：mtcarsはパラメータが11個あります。そのままやってもよいですが、変数を適宜わりあてて行列をしぼってクラスター分析することもできます。</p>
+<pre><code>target <- c(4,6)
+mtcars[,target]</code></pre>
+
+
+<table id="work2">
+<tr><th>番号</th><th>変数名</th><th>内容</th><th>和訳</th><th>番号</th><th>変数名</th><th>内容</th><th>和訳</th></tr>
+<tr><td>1</td><td>mpg</td><td>Miles/(US) gallon</td><td>1ガロンあたりの走行距離(Miles)</td>
+<td>2</td><td>cyl</td><td>Number of cylinders</td><td>シリンダーの数</td></tr>
+<tr><td>3</td><td>disp</td><td>Displacement (cu.in.)</td><td>排気量</td>
+<td>4</td><td>hp</td><td>Gross horsepower</td><td>馬力</td></tr>
+<tr><td>5</td><td>drat</td><td>Rear axle ratio</td><td>後部車軸比率</td>
+<td>6</td><td>wt</td><td>Weight (lb/1000)</td><td>重量(ポンド/1000)</td></tr>
+<tr><td>7</td><td>qsec</td><td>1/4 mile time</td><td>ドラッグレース(1/4 マイル)<br/>の走行時間(秒)</td>
+<td>8</td><td>vs</td><td>V/S</td><td>バルブスプリングの</br>有無(0:無 1:有)</td></tr>
+<tr><td>9</td><td>am</td><td>Transmission<br/>(0 = automatic, 1 = manual)</td><td>トランスミッション<br/>(0:オート 1:マニュアル)</td>
+<td>10</td><td>gear</td><td>Number of forward gears</td><td>前方ギヤの数</td></tr>
+<tr><td>11</td><td>carb</td><td>Number of carburetors</td><td>キャブレターの数</td></tr>
+</table>
+
+</section>
+
+<section class="slide" id="last">
+<h2>終わりに</h2>
+<p>おつかれさまでした。</p>
+
+
+
+<h3>参考文献</h3>
+<ul>
+<li>青木繁伸 Rによる統計解析 株式会社オーム社</li>
+<li>豊田秀樹 データマイニング入門 東京都書</li>
+</ul>
+
+</section>
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+
+<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="jquery-1.7.2.min.js"><\/script>')</script>
+
+<!-- Deck Core and extensions -->
+<script src="core/deck.core.js"></script>
+<script src="extensions/hash/deck.hash.js"></script>
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck -->
+<script>
+$(function() {
+	$.deck('.slide');
+});
+</script>
+
+</body>
+</html>

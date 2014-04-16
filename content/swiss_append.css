@@ -1,0 +1,23 @@
+table#waku td, table#waku th {
+	border: 1px solid #000;
+	padding: 20px;
+}
+
+table#work2 {
+	width: 100%;
+}
+
+table#work2 td, table#work2 th {
+	border: 1px solid #000;
+	padding: 10px;
+	font-size: medium;
+}
+
+@font-face {
+    font-family: sourceFont;
+    src: url("SourceCodePro-Regular.ttf");
+}
+
+.deck-container code {
+font: normal normal normal 100%/1.2em 'M+2VM+IPAG circle', 'Osaka-Mono', 'ÇlÇr ÉSÉVÉbÉN', 'MS Gothic', 'VL Gothic', monospace;
+}

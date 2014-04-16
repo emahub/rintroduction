@@ -1,0 +1,492 @@
+data(package = "cluster")
+data(USArrests)
+USArrests
+library(cluster)
+usc<-kmeans(USArrests, 2)#
+usc
+plot(pam(mtcars[,1:2], 2), ask=TRUE)
+iris.kmean <- kmeans(iris[,1:11]], centers = 3)#
+iris.kmean
+iris.kmean <- kmeans(iris[,1:11], centers = 3)#
+iris.kmean
+mtcars#
+mtcars.k <- kmeans(mtcars[,1:11], 2)#
+mtcars.k$cluster#
+mtcars.k$centers#
+plot(mtcars[, c(1:5)], col = mtcars.k$cluster)#
+points(mtcars.k$centers, col = 1:4, pch = 8, cex=4)
+mtcars.k <- kmeans(mtcars[,c(5,6)], 4)#
+plot(mtcars[, c(5,6)], col = mtcars.k$cluster)#
+points(mtcars.k$centers, col = 1:4, pch = 8, cex=4)
+data(kyphosis)#
+kyphosis
+mtcars
+library(mvpart)#
+data(kyphosis)#
+kyphosis
+iris.rp<-rpart(Species~., data=iris)
+library(mvpart)
+iris.rp<-rpart(Species~., data=iris)
+iris
+iris[,1:5]
+iris[,1:3]
+iris[1:3]
+iris[1:3,1:3]
+iris[1:3,1:5]
+iris[1:3,1:101]
+iris[1:3,1:1]
+iris[1:3,1:4]
+iris[1:3,1:5]
+iris[1:1,1:5]
+iris[51:51,1:5]
+iris[101:101,1:5]
+iris.rp<-rpart(Species~., data=iris) #Speciesは独立変数#
+print(iris.rp, digit=2) # digitは桁の粗さ#
+plot(iris.rp, uniform=T) # uniform=Tすると、各項の高さを同一に調整してくれる#
+text(iris.rp, use.n=T, all=T, cex = 0.7)#
+# use.n=T:末端に成否の個数を数値で書いてくれる#
+# all=T:各分岐点ごとに割合を表示してくれる cex:文字サイズ
+iris.rp<-rpart(Species~., data=iris)
+iris[1:3]
+iris[,1:3]
+iris[,1:5]
+iris[1:5]
+iris[1:1,1:5]
+iris[1:3,1:5]
+iris[1:3]
+iris[1:3,1:5]
+iris.rp<-rpart(Species~., data=iris[1:50,1:5])
+iris.rp<-rpart(Species~., data=iris)print(iris.rp, digit=2) # digitは桁の粗さ#
+plot(iris.rp, uniform=T) # uniform=Tすると、各項の高さを同一に調整してくれる#
+text(iris.rp, use.n=T, all=T, cex = 0.7)
+iris.rp<-rpart(Species~., data=iris[1:50,1:5])
+print(iris.rp, digit=2)
+print(iris.rp)
+iris.rp<-rpart(Species~., data=iris)
+print(iris.rp)
+iris
+iris[1:5,1:5]
+iris.rp<-rpart(Species~., data=iris)
+iris.rp<-rpart(Species~., data=iris[1:5,1:5])
+print(iris.rp)
+iris.rp
+rp<-rpart(Species~., data=iris[1:5,1:5])
+rp
+rp[1:5]
+rp[1:6]
+rp[1:7]
+rp[1:10]
+rp[1:12]
+rp[1:11]
+rp[1:1]
+rp[1:2]
+rp[1:3]
+rp[1:4]
+rp[1:5]
+rp[1:6]
+rp[1:7]
+rp[1:8]
+rp[1:9]
+rp[1:20]
+itid
+tp
+rp
+rp[2]
+rp[5]
+rp[6]
+rp[7]
+rp[8]
+rp[09]
+rp[9]
+rp[8]
+rp[2]
+rp[1]
+rp[3]
+rp[4]
+rp[6]
+plot(iris[1])
+plot(iris[0])
+plot(iris[2])
+plot(iris[3])
+plot(iris[4])
+plot(iris[5])
+plot(iris[6])
+plot(iris[7])
+plot(iris[9])
+plot(rp[9])
+plot(rp[8])
+plot(rp[7])
+plot(rp[6])
+plot(rp[5]])
+plot(rp[5])
+plot(rp[4]])
+plot(rp[4])
+plot(rp[3])
+plot(rp[2])
+plot(rp[1])
+iris.rp<-rpart(Species~., data=iris)
+plot(iris.rp)
+plotcp(iris.rp)
+library(MASS)#
+Animals #体重(kg)と脳の重さ(g)#
+scale(Animals)#
+#各列が変量となっているデータ行列 x の各変量の単位が異なる場合に，#
+#各変量を平均が 0 ，分散が 1 になるように変換することがある．これを規準化または標準化という#
+#http://c4s.blog72.fc2.com/blog-entry-99.html#
+#
+距離行列 <- dist(scale(Animals), method="euclidean")#
+#距離行列#
+#round(距離行列,3)#
+動物クラスタ<-hclust(距離行列,method="ward")#
+plot(動物クラスタ,hang=0.2) #hang どの位置にラベルをおくか#
+group<-cutree(動物クラスタ, 5) #5つにグループを分割する#
+group
+距離行列 <- dist(Animals, method="euclidean")#
+#距離行列#
+#round(距離行列,3)#
+動物クラスタ<-hclust(距離行列,method="ward")#
+plot(動物クラスタ,hang=0.2) #hang どの位置にラベルをおくか#
+group<-cutree(動物クラスタ, 5) #5つにグループを分割する#
+group
+Animals
+距離行列 <- dist(scale(Animals), method="euclidean")#
+#距離行列#
+#round(距離行列,3)#
+動物クラスタ<-hclust(距離行列,method="ward")#
+plot(動物クラスタ,hang=0.2) #hang どの位置にラベルをおくか#
+group<-cutree(動物クラスタ, 5) #5つにグループを分割する#
+group
+scaled <- scale(Animals)#
+clust2 <- kmeans(scaled, ncol=5, nstart=10)#
+clust2#
+plot(scaled, col = clust2$cluster)#
+points(clust2$centers, col=1:5, pch = 8, cex=2) #中心点を書く#
+clust2$cluster#
+tapply(names(clust2$cluster), clust2$cluster, unique)
+library(MASS)
+scaled <- scale(Animals)#
+clust2 <- kmeans(scaled, ncol=5, nstart=10)#
+clust2#
+plot(scaled, col = clust2$cluster)#
+points(clust2$centers, col=1:5, pch = 8, cex=2) #中心点を書く#
+clust2$cluster#
+tapply(names(clust2$cluster), clust2$cluster, unique)
+kmeans
+scaled <- scale(Animals)#
+clust2 <- kmeans(scaled, ncol=5, nstart=10)#
+clust2#
+plot(scaled, col = clust2$cluster)#
+points(clust2$centers, col=1:5, pch = 8, cex=2) #中心点を書く#
+clust2$cluster#
+tapply(names(clust2$cluster), clust2$cluster, unique)
+scaled <- scale(Animals)#
+clust2 <- kmeans(scaled, nstart=10)#
+clust2#
+plot(scaled, col = clust2$cluster)#
+points(clust2$centers, col=1:5, pch = 8, cex=2) #中心点を書く#
+clust2$cluster#
+tapply(names(clust2$cluster), clust2$cluster, unique)
+clust2 <- kmeans(Animals, nstart=10)#
+clust2#
+plot(scaled, col = clust2$cluster)#
+points(clust2$centers, col=1:5, pch = 8, cex=2) #中心点を書く#
+clust2$cluster#
+tapply(names(clust2$cluster), clust2$cluster, unique)
+Animals #体重(kg)と脳の重さ(g)#
+scale(Animals)
+Animals[1]#
+距離行列 <- dist(Animals[1])#
+round(距離行列,3)#
+動物クラスタ<-hclust(距離行列,method="ward")#
+plot(動物クラスタ,hang=0.2)#
+#
+set.seed(123)
+サンプル3-02#
+scaled <- scale(Animals)#
+clust2 <- kmeans(scaled, ncol=5, nstart=10)#
+clust2#
+plot(scaled, col = clust2$cluster)#
+points(clust2$centers, col=1:5, pch = 8, cex=2) #中心点を書く#
+clust2$cluster#
+tapply(names(clust2$cluster), clust2$cluster, unique)
+scaled <- scale(Animals)#
+clust2 <- kmeans(scaled, 4)#
+#clust2 <- kmeans(scaled, ncol=5, nstart=10)#
+clust2#
+plot(scaled, col = clust2$cluster)#
+points(clust2$centers, col=1:5, pch = 8, cex=2) #中心点を書く#
+clust2$cluster#
+tapply(names(clust2$cluster), clust2$cluster, unique)
+scaled <- scale(Animals)#
+clust2 <- kmeans(scaled, 2)#
+#clust2 <- kmeans(scaled, ncol=5, nstart=10)#
+clust2#
+plot(scaled, col = clust2$cluster)#
+points(clust2$centers, col=1:5, pch = 8, cex=2) #中心点を書く#
+clust2$cluster#
+tapply(names(clust2$cluster), clust2$cluster, unique)
+scaled <- scale(Animals)#
+clust2 <- kmeans(scaled, 3)#
+#clust2 <- kmeans(scaled, ncol=5, nstart=10)#
+clust2#
+plot(scaled, col = clust2$cluster)#
+points(clust2$centers, col=1:5, pch = 8, cex=2) #中心点を書く#
+clust2$cluster#
+tapply(names(clust2$cluster), clust2$cluster, unique)
+clust2<-kmeans(Animals, 3)
+clust2#
+plot(scaled, col = clust2$cluster)#
+points(clust2$centers, col=1:5, pch = 8, cex=2) #中心点を書く#
+clust2$cluster#
+tapply(names(clust2$cluster), clust2$cluster, unique)
+scaled <- scale(Animals)#
+clust2 <- kmeans(scaled, 3)#
+#clust2 <- kmeans(scaled, ncol=5, nstart=10)#
+clust2#
+plot(scaled, col = clust2$cluster)#
+points(clust2$centers, col=1:5, pch = 8, cex=2) #中心点を書く#
+clust2$cluster#
+tapply(names(clust2$cluster), clust2$cluster, unique)
+clust2<-kmeans(Animals, 3)#
+plot(scaled, col = clust2$cluster)#
+points(clust2$centers, col=1:5, pch = 8, cex=2) #中心点を書く#
+clust2$cluster#
+tapply(names(clust2$cluster), clust2$cluster, unique)
+clust2<-kmeans(scale(Animals), 3)#
+plot(scaled, col = clust2$cluster)#
+points(clust2$centers, col=1:5, pch = 8, cex=2) #中心点を書く#
+clust2$cluster#
+tapply(names(clust2$cluster), clust2$cluster, unique)
+scale(Animals)
+plot(scaled, col = clust2$cluster)
+plot(Animals)
+plot(scaled, col = clust2$cluster)
+plot(Animals)
+scaled <- scale(Animals)#
+clust2 <- kmeans(scaled, 3)#
+clust2#
+plot(scaled, col = clust2$cluster)#
+points(clust2$centers, col=1:5, pch = 8, cex=2) #中心点を書く
+Animals.s <- scale(Animals)#
+clust2 <- kmeans(Animals.s, 3)#
+plot(Animals.s, col = clust2$cluster)#
+points(clust2$centers, col=1:5, pch = 8, cex=2) #中心点を書く
+Animals.s <- scale(Animals)#
+Animals.c <- kmeans(Animals.s, 3)#
+Animals.c#
+plot(Animals.s, col = Animals.c$cluster)#
+points(Animals.c$centers, col=1:5, pch = 8, cex=2) #中心点を書く
+a=c(1,2,3,4,5,6,7,8,9,10)
+a
+b=c(10,20,30,40,50,60,70,80,90,100)
+b
+scale(b)
+scale(a)
+mtcars
+kmeans(mtcars, 4)
+target<-c(5,6)
+mtcars[,target]
+距離行列 <- dist(scale(Animals), method="euclidean")#
+#距離行列#
+#round(距離行列,3)#
+動物クラスタ<-hclust(距離行列,method="ward")#
+plot(動物クラスタ,hang=0.2) #hang どの位置にラベルをおくか#
+group<-cutree(動物クラスタ, 5) #5つにグループを分割する#
+group
+距離行列
+distmatrix <- dist(scale(Animals), method="euclidean")#
+Animals.c<-hclust(distmatrix,method="ward")#
+plot(Animals.c,hang=0.2) #hang どの位置にラベルをおくか#
+group<-cutree(Animals.c, 5) #5つにグループを分割する#
+group
+x <- c(1.9, 0.8, 1.1, 0.1, 4.4, 5.5, 1.6, 4.6, 3.4)
+t.test(x)
+hist(x)
+hist(x, right=FALSE)
+hist(x, right=FALSE, col="gray")
+stripchart(x)
+hist(x, right=FALSE, col="gray")
+x
+t.test
+t.test(x)
+x = c(1.9, 0.8, 1.1, 0.1, -0.1, 4.4, 5.5, 1.6, 4.6, 3.4)
+t.test(x)
+read.csv(data.csv)
+read.csv("data.csv")
+data=read.csv("data.csv")
+data
+t.test(data)
+data[,1]
+data[,2]
+data[,3]
+data[,4]
+data[,5]
+data[,6]
+data[,4]
+hist(data[,4])
+t.test(data[,4])
+dataset
+dataset()
+data
+data()
+human<-read.csv("data.csv")
+human
+data()
+iris
+library(mvpart)
+iris.rp<-rpart(Species~., data=iris) #Speciesは独立変数#
+print(iris.rp, digit=2) # digitは桁の粗さ#
+plot(iris.rp, uniform=T) # uniform=Tすると、各項の高さを同一に調整してくれる#
+text(iris.rp, use.n=T, all=T, cex = 0.7)
+printcp(iris.rp)
+Animals
+library(MASS)
+Animals
+scale(Animals)
+Animals.s <- scale(Animals)
+Animals.c <- kmeans(Animals.s, 3)
+Animals.c
+plot(Animals.s, col = Animals.c$cluster)
+points(Animals.c$centers, col=1:3, pch=8, cex=2)
+points(Animals.c$centers, col=1:2, pch=8, cex=2)
+points(Animals.c$centers, col=1:4, pch=8, cex=2)
+plot(Animals.s, col = Animals.c$cluster)
+Animals.c <- kmeans(Animals.s, 5)
+plot(Animals.s, col = Animals.c$cluster)
+points(Animals.c$centers, col=1:4, pch=8, cex=2)
+points(Animals.c$centers, col=1:5, pch=8, cex=2)
+Animals.c
+dismatrix <- dist(Animals.s, method="euclidean")
+dismatrix <- dist(Animals.s)
+Animals.c <- hclust(distmatrix, method="ward")
+distmatrix <- dist(Animals.s)
+Animals.c <- hclust(distmatrix, method="ward")
+plot(Animals.c, hang=0.2)
+group<-cutree(Animals.c, 5)
+group
+mtcars
+mtcars[,c(5,6)]
+distmatrix <- dist(mtcars[,c(4,6)])
+mtcars.c <- hclust(distmatrix)
+plot(mtcars.c, hang=0.2)
+data_part <- read.csv("data_part.csv")#
+data_part#
+#
+set.seed(20)#
+data_part.r <- rpart(State~. ,data=data_part)#
+print(data_part.r)#
+plot(data_part.r, uniform=F)#
+text(data_part.r, use.n=F, all=F, cex = .4)#
+#
+printcp(data_part.r)
+library(mvpart)
+data_part <- read.csv("data_part.csv")#
+data_part#
+#
+set.seed(20)#
+data_part.r <- rpart(State~. ,data=data_part)#
+print(data_part.r)#
+plot(data_part.r, uniform=F)#
+text(data_part.r, use.n=F, all=F, cex = .4)#
+#
+printcp(data_part.r)
+library(mvpart)
+data_part <- read.csv("data_part.csv")#
+data_part
+library(mvpart)#
+# data(kyphosis)#
+# kyphosis#
+data_part <- read.csv("data_part.csv")#
+data_part#
+#
+set.seed(20)#
+data_part.r <- rpart(State~. ,data=data_part)#
+print(data_part.r)#
+plot(data_part.r, uniform=F)#
+text(data_part.r, use.n=F, all=F, cex = .4)#
+#
+printcp(data_part.r)
+library(mvpart)#
+data_part <- read.csv("data_part.csv")#
+data_part#
+#
+set.seed(20)#
+data_part.r <- rpart(State~. ,data=data_part)#
+print(data_part.r)#
+plot(data_part.r, uniform=F)#
+text(data_part.r, use.n=F, all=F, cex = .4)#
+#
+printcp(data_part.r)
+data_part.r2 <- prune(kyphosis.rp1, cp=0.117647)#
+plot(data_part.r2, uniform=T, branch=0.6, margin=0.05)#
+text(data_part.r2, use.n=T, all=T)
+data_part.r2 <- prune(data_part.r, cp=0.117647)#
+plot(data_part.r2, uniform=T, branch=0.6, margin=0.05)#
+text(data_part.r2, use.n=T, all=T)
+data_part.r2 <- prune(data_part.r, cp=0.117647)#
+plot(data_part.r2, uniform=T, branch=0.6, margin=0.05)
+text(data_part.r2, use.n=T, all=T)
+data_part.r2 <- prune(data_part.r, cp=0.117647)#
+plot(data_part.r2, uniform=T, branch=0.6, margin=0.05)#
+text(data_part.r2, use.n=T, all=F, cex = .4)
+data_part.r2
+data_part.r1
+data_part.r
+library(mvpart)#
+# data(kyphosis)#
+# kyphosis#
+kyphosis <- read.csv("data_part.csv")#
+kyphosis#
+#
+set.seed(20)#
+kyphosis.rp1 <- rpart(State~. ,data=kyphosis)#
+print(kyphosis.rp1)#
+plot(kyphosis.rp1, uniform=F)#
+text(kyphosis.rp1, use.n=F, all=F, cex = .4)#
+#
+printcp(kyphosis.rp1)#
+#
+kyphosis.rp2 <- prune(kyphosis.rp1, cp=0.117647)#
+plot(kyphosis.rp2, uniform=T, branch=0.6, margin=0.05)#
+text(kyphosis.rp2, use.n=T, all=T)
+data_part.r2 <- prune(data_part.r, cp=0.02)#
+plot(data_part.r2, uniform=T, branch=0.6, margin=0.05)#
+text(data_part.r2, use.n=T, all=F, cex = .4)
+data_part.r2 <- prune(data_part.r, cp=0.2)#
+plot(data_part.r2, uniform=T, branch=0.6, margin=0.05)#
+text(data_part.r2, use.n=T, all=F, cex = .4)
+data_part.r2 <- prune(data_part.r, cp=0.01)#
+plot(data_part.r2, uniform=T, branch=0.6, margin=0.05)#
+text(data_part.r2, use.n=T, all=F, cex = .4)
+printcp(data_part.r)
+data_part.r2 <- prune(data_part.r, cp=0.09)#
+plot(data_part.r2, uniform=T, branch=0.6, margin=0.05)#
+text(data_part.r2, use.n=T, all=F, cex = .4)
+data_part.r2 <- prune(data_part.r, cp=0.07)#
+plot(data_part.r2, uniform=T, branch=0.6, margin=0.05)#
+text(data_part.r2, use.n=T, all=F, cex = .4)
+iris.rp<-rpart(Species~., data=iris) #Speciesは独立変数#
+print(iris.rp, digit=2) # digitは桁の粗さ#
+plot(iris.rp, uniform=T) # uniform=Tすると、各項の高さを同一に調整してくれる#
+text(iris.rp, use.n=T, all=T, cex = 0.7)
+printcp(iris.rp)
+iris.rp1 <- prune(iris.rp, cp=0.02)#
+plot(iris.rp1, uniform=T) #margin,branchパラメータは省略#
+text(iris.rp1, use.n=T, all=T, cex = .7)
+iris.rp1 <- prune(iris.rp, cp=0.141927)#
+plot(iris.rp1, uniform=T)#
+text(iris.rp1, use.n=T, all=T, cex = .7)
+library(MASS)#
+Animals #体重(kg)と脳の重さ(g)#
+scale(Animals)
+Animals.s <- scale(Animals)#
+Animals.c <- kmeans(Animals.s, 3) # 3:クラスタ数#
+Animals.c#
+plot(Animals.s, col = Animals.c$cluster)#
+points(Animals.c$centers, col=1:3, pch = 8, cex=2)
+distmatrix <- dist(Animals.s)#
+Animals.c<-hclust(distmatrix)#
+plot(Animals.c,hang=0.2) #hang どの位置にラベルをおくか
+group<-cutree(Animals.c, 5) #5つにグループを分割する#
+group
+mtcars
